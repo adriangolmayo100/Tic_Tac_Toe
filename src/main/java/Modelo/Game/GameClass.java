@@ -3,11 +3,13 @@ package Modelo.Game;
 import Modelo.Board.Board;
 import Modelo.Players.Player;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class GameClass implements Game{
     private Board board;
-    private Player player1;
-    private Player player2;
-    Player playerTurn=player1;
+    private final List<Player> listPlayer = new LinkedList<>();
+    int turn=0;
     public GameClass(){
         super();
     }
@@ -19,16 +21,14 @@ public class GameClass implements Game{
 
     @Override
     public void turn(int row,int field) {
-        board.turn(row,field,playerTurn.getToken());
+        board.turn(row,field, getCurrentPlayer().getToken());
     }
     public void passTurn(){
-        if (playerTurn==player1)
-            playerTurn=player2;
-        else
-            playerTurn=player1;
+        if (++turn >= listPlayer.size())
+            turn=0;
     }
     public boolean hasWon(){
-        return board.checkInRow(playerTurn.getToken());
+        return board.checkInRow(getCurrentPlayer().getToken());
     }
     public void setBoard(Board board) {
         this.board = board;
@@ -40,18 +40,22 @@ public class GameClass implements Game{
 
 
     @Override
-    public Player getPlayer() {
-        return playerTurn;
+    public Player getCurrentPlayer() {
+        return listPlayer.get(turn);
     }
 
     @Override
-    public void setPlayer1(Player player) {
-        this.player1=player;
+    public void addPlayer(Player player) {
+        listPlayer.add(player);
     }
 
     @Override
-    public void setPlayer2(Player player) {
-        this.player2=player;
+    public String showBoard() {
+        return board.showBoard();
     }
 
+    @Override
+    public void setSize(int size) {
+        board.setSize(size);
+    }
 }

@@ -10,7 +10,8 @@ class AlgorithmsBoardV1Test {
 
     @Test
     void check() {
-        Board board= new BoardClass(3);
+        Board board= new BoardClass();
+        board.setSize(3);
         AlgorithmsBoardV1 algorithmsBoardV1 = new AlgorithmsBoardV1(board);
         board.turn(0,0,'O');
         board.turn(1,1,'O');

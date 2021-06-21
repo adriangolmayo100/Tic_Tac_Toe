@@ -9,8 +9,10 @@ public interface Board {
     String showBoard();
     void setSize(int size);
     void setAlgorithmsBoard(AlgorithmsBoard algorithmsBoard);
+    char get(int row,int field);
     char[][] getBoardArray();
     int getRowLastTurn();
     int getFieldLastTurn();
     int getSize();
+    char getDefaultBox();
 }

@@ -5,13 +5,13 @@ import Modelo.Players.Player;
 
 public interface Game {
     void start();
-    void turn(int field, int row);
+    void turn(int row, int field);
     void passTurn();
     boolean hasWon();
     void setBoard(Board board);
     Board getBoard();
-    Player getPlayer();
-    void setPlayer1(Player player);
-    void setPlayer2(Player player);
-
+    Player getCurrentPlayer();
+    void addPlayer(Player player);
+    String showBoard();
+    void setSize(int size);
 }

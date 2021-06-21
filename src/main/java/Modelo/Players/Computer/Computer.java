@@ -1,13 +1,18 @@
-package Modelo.Players;
+package Modelo.Players.Computer;
 
 import Modelo.Board.Board;
+import Modelo.Players.Player;
 
-public class PlayerImplementation implements Player{
-    private final boolean player = true;
+public class Computer implements Player {
+    private final boolean player = false;
     private String name;
-    private char token='X';
     private Board board;
-    public PlayerImplementation(){super();}
+    private char token;
+    private AlgorithmsComputer algorithmsComputer;
+
+    public Computer(){
+        super();
+    }
 
     @Override
     public boolean isPlayer() {
@@ -16,8 +21,7 @@ public class PlayerImplementation implements Player{
 
     @Override
     public int[] getMove() {
-        board.getSize();
-        return new int[0];
+        return algorithmsComputer.getMove();
     }
 
     @Override
@@ -31,13 +35,19 @@ public class PlayerImplementation implements Player{
     }
 
     @Override
+    public void setAlgorithmsComputer(AlgorithmsComputer algorithmsComputer) {
+        this.algorithmsComputer = algorithmsComputer;
+        this.algorithmsComputer.setBoard(board);
+    }
+
+    @Override
     public void setBoard(Board board) {
         this.board=board;
     }
 
     @Override
     public void setName(String name) {
-        this.name=name;
+        this.name = name;
     }
 
     @Override
