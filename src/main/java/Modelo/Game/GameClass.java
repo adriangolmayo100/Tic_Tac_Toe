@@ -1,14 +1,15 @@
 package Modelo.Game;
 
+import Modelo.Board.AlgorithmsBoard.ExceptionBoxIsEmpty;
 import Modelo.Board.Board;
 import Modelo.Players.Player;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameClass implements Game{
     private Board board;
-    private final List<Player> listPlayer = new LinkedList<>();
+    private final List<Player> listPlayer = new ArrayList<>();
     int turn=0;
     public GameClass(){
         super();
@@ -17,27 +18,39 @@ public class GameClass implements Game{
     @Override
     public void start() {
         board.clear();
+        for (Player player : listPlayer)
+            player.clear();
     }
 
     @Override
-    public void turn(int row,int field) {
+    public void turn(int row,int field) throws ExceptionBoxIsEmpty {
         board.turn(row,field, getCurrentPlayer().getToken());
     }
     public void passTurn(){
         if (++turn >= listPlayer.size())
             turn=0;
     }
-    public boolean hasWon(){
-        return board.checkInRow(getCurrentPlayer().getToken());
+    public boolean hasFinished(){
+        return board.hasFinished(getCurrentPlayer().getToken());
     }
     public void setBoard(Board board) {
         this.board = board;
     }
 
+    @Override
+    public boolean hasWinner() {
+        return board.hasWinner();
+    }
+
+    @Override
     public Board getBoard() {
         return board;
     }
 
+    @Override
+    public Player getPlayer(int index){
+        return listPlayer.get(index);
+    }
 
     @Override
     public Player getCurrentPlayer() {
@@ -50,6 +63,11 @@ public class GameClass implements Game{
     }
 
     @Override
+    public void setPlayer(Player player, int index) {
+        listPlayer.set(index,player);
+    }
+
+    @Override
     public String showBoard() {
         return board.showBoard();
     }
@@ -58,4 +76,5 @@ public class GameClass implements Game{
     public void setSize(int size) {
         board.setSize(size);
     }
+
 }

@@ -4,10 +4,10 @@ import Modelo.Board.Board;
 import Modelo.Players.Player;
 
 public class Computer implements Player {
-    private final boolean player = false;
     private String name;
     private Board board;
-    private char token;
+    private Character token;
+    private Character rivalToken;
     private AlgorithmsComputer algorithmsComputer;
 
     public Computer(){
@@ -16,12 +16,12 @@ public class Computer implements Player {
 
     @Override
     public boolean isPlayer() {
-        return player;
+        return false;
     }
 
     @Override
     public int[] getMove() {
-        return algorithmsComputer.getMove();
+        return algorithmsComputer.getMove(token,rivalToken);
     }
 
     @Override
@@ -30,10 +30,14 @@ public class Computer implements Player {
     }
 
     @Override
-    public void setToken(char token) {
+    public void setTokenPlayer(Character token) {
         this.token=token;
     }
 
+    @Override
+    public void setRivalToken(Character rivalToken){
+        this.rivalToken =rivalToken;
+    }
     @Override
     public void setAlgorithmsComputer(AlgorithmsComputer algorithmsComputer) {
         this.algorithmsComputer = algorithmsComputer;
@@ -53,5 +57,9 @@ public class Computer implements Player {
     @Override
     public String getName() {
         return name;
+    }
+    @Override
+    public void clear(){
+        algorithmsComputer.clear();
     }
 }

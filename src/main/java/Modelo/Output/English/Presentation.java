@@ -1,11 +1,11 @@
-package Modelo.InputAndOutput;
+package Modelo.Output.English;
 
 public class Presentation {
     public static String main(){
-        return begining() +
+        return beginning() +
                 rules();
     }
-    private static String begining(){
+    private static String beginning(){
         return "Welcome to the game Tic Tac Toe\n";
     }
     private static String rules(){

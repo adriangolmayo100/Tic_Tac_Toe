@@ -13,7 +13,7 @@ public class AlgorithmsBoardV1 implements AlgorithmsBoard {
     }
     @Override
     public boolean check(char token) {
-        return checkRow(token) || checkField(token) || checkDiagonal(token);
+        return checkRow(token) || checkField(token) || checkDiagonal(token) || checkInvertedDiagonal(token);
     }
     private boolean checkRow(char token){
         int row = board.getRowLastTurn();
@@ -42,6 +42,18 @@ public class AlgorithmsBoardV1 implements AlgorithmsBoard {
         char[][] boardArray = board.getBoardArray();
         for (int i = 0; i < size; i++){
             if (boardArray[i][i]!=token)
+                return false;
+        }
+        return true;
+    }
+    private boolean checkInvertedDiagonal(char token){
+        int size = board.getSize();
+        if (size%2==0)
+            return false;
+        char[][] boardArray = board.getBoardArray();
+        int maxPos = size - 1;
+        for (int i = 0; i < size; i++){
+            if (boardArray[i][maxPos - i]!=token)
                 return false;
         }
         return true;
