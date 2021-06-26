@@ -50,7 +50,6 @@ public class AlgorithmsComputerV1 implements AlgorithmsComputer{
             return new int[]{size / 2, size / 2};
         while (listCorners.size()>0){
             move = listCorners.remove( (int) (Math.random()*listCorners.size()));
-            System.out.println("PEPE:" + listCorners.size() + "  " + move[0] + "," + move[1]);
             if (!board.isBusy(move[0],move[1]))
                 return move;
         }

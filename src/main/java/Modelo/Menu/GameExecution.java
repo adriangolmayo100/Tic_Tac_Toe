@@ -11,10 +11,13 @@ public class GameExecution extends Action{
         super();
     }
     @Override
-    public void doAction() {
+    public void doAction() throws InterruptedException {
         Output output = Application.getOutput();
         game.start();
+        game.setCurrentPlayer(chooseTurn.getTurn());
+        System.out.println(output.getRaffleWinner(game.getCurrentPlayer().getName()));
         int row,field;
+        Thread.sleep(1000);
         while (true){
             Player player = game.getCurrentPlayer();
             while (true){

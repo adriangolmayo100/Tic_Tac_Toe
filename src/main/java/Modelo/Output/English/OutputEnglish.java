@@ -134,4 +134,19 @@ public class OutputEnglish implements Output {
         return MessagesChangeRival.getVsComputer();
     }
 
+    @Override
+    public String getRaffle() {
+        return Raffle.getDescription();
+    }
+
+    @Override
+    public String getRaffleResult(int result) {
+        return Raffle.getResult(result);
+    }
+
+    @Override
+    public String getRaffleWinner(String name) {
+        return Raffle.getWinner(name);
+    }
+
 }

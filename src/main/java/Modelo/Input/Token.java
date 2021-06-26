@@ -1,6 +1,5 @@
 package Modelo.Input;
 
-import Modelo.Input.input;
 
 public class Token extends input {
     public static Character GetToken(){

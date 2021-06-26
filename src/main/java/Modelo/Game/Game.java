@@ -13,6 +13,7 @@ public interface Game {
     void setBoard(Board board);
     boolean hasWinner();
     Board getBoard();
+    void setCurrentPlayer(int index);
     Player getCurrentPlayer();
     void addPlayer(Player player);
     void setPlayer(Player player, int index);

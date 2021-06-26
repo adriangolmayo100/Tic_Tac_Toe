@@ -3,6 +3,7 @@ package Modelo.Menu;
 import Modelo.Board.AlgorithmsBoard.AlgorithmsBoardV1;
 import Modelo.Board.Board;
 import Modelo.Board.BoardClass;
+import Modelo.Game.Game;
 import Modelo.Game.GameClass;
 import Modelo.Input.Name;
 import Modelo.Output.Output;
@@ -11,11 +12,10 @@ import Modelo.Players.Computer.Computer;
 import Modelo.Players.Player;
 import Modelo.Players.PlayerImplementation;
 
-public class initGame extends Action{
-    @Override
-    public void doAction() {
+public class initGame{
+    public static Game doAction() {
         Output output = Application.getOutput();
-        game = new GameClass();
+        Game game = new GameClass();
         Board board= new BoardClass();
         board.setSize(3);
         board.setAlgorithmsBoard(new AlgorithmsBoardV1(board));
@@ -34,10 +34,6 @@ public class initGame extends Action{
         player.setRivalToken(token);
         player.setAlgorithmsComputer(new AlgorithmsComputerV1());
         game.addPlayer(player);
-    }
-
-    @Override
-    public String getTitle() {
-        return "";
+        return game;
     }
 }

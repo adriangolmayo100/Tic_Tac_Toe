@@ -27,4 +27,7 @@ public interface Output {
     String getEnglish();
     String getVsPlayer();
     String getVsComputer();
+    String getRaffle();
+    String getRaffleResult(int result);
+    String getRaffleWinner(String name);
 }

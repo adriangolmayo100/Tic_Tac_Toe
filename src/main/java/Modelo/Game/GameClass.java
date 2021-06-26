@@ -48,6 +48,11 @@ public class GameClass implements Game{
     }
 
     @Override
+    public void setCurrentPlayer(int index) {
+        turn = index;
+    }
+
+    @Override
     public Player getPlayer(int index){
         return listPlayer.get(index);
     }
