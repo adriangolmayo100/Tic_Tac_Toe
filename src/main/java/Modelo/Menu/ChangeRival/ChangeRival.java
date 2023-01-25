@@ -5,7 +5,6 @@ import Modelo.Menu.Action;
 import Modelo.Menu.Application;
 import Modelo.Output.Output;
 
-import java.util.Scanner;
 
 public class ChangeRival extends Action {
     @Override

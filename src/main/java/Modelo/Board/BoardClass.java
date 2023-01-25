@@ -36,7 +36,7 @@ public class BoardClass implements Board{
         return ( dirty >= boxes || checkInRow(token) );
     }
 
-    private boolean checkInRow(Character token) {
+    public boolean checkInRow(Character token) {
         return hasWinner = algorithmsBoard.check(token);
     }
 
@@ -115,4 +115,64 @@ public class BoardClass implements Board{
     public int getFieldLastTurn() {
         return fieldLastTurn;
     }
+
+    @Override
+    public void undoTurn(int row, int field) throws ExceptionBoxIsEmpty {
+        if (!isBusy(row,field))
+            throw new ExceptionBoxIsEmpty(row,field);
+        boardArray[row][field]=boxDefault;;
+        mapEmptyBox[row][field]=false;
+        dirty--;
+    }
+    public void setBoardArray(char[][] boardArray) {
+        this.boardArray = boardArray;
+    }
+
+    public boolean[][] getMapEmptyBox() {
+        return this.mapEmptyBox;
+    }
+
+    public void setMapEmptyBox(boolean[][] mapEmptyBox) {
+        this.mapEmptyBox = mapEmptyBox;
+    }
+
+    public int getDirty() {
+        return this.dirty;
+    }
+
+    public void setDirty(int dirty) {
+        this.dirty = dirty;
+    }
+
+    public int getBoxes() {
+        return this.boxes;
+    }
+
+    public void setBoxes(int boxes) {
+        this.boxes = boxes;
+    }
+    public void setRowLastTurn(int rowLastTurn) {
+        this.rowLastTurn = rowLastTurn;
+    }
+    public void setFieldLastTurn(int fieldLastTurn) {
+        this.fieldLastTurn = fieldLastTurn;
+    }
+
+    public boolean isHasWinner() {
+        return this.hasWinner;
+    }
+
+    public boolean getHasWinner() {
+        return this.hasWinner;
+    }
+
+    public void setHasWinner(boolean hasWinner) {
+        this.hasWinner = hasWinner;
+    }
+
+    public AlgorithmsBoard getAlgorithmsBoard() {
+        return this.algorithmsBoard;
+    }
+
+
 }

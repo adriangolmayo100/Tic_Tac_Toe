@@ -7,6 +7,7 @@ import Modelo.Game.Game;
 import Modelo.Game.GameClass;
 import Modelo.Input.Name;
 import Modelo.Output.Output;
+import Modelo.Players.Computer.AlgorithmsComputerMiniMax;
 import Modelo.Players.Computer.AlgorithmsComputerV1;
 import Modelo.Players.Computer.Computer;
 import Modelo.Players.Player;
@@ -32,7 +33,8 @@ public class initGame{
         player.setBoard(board);
         player.setTokenPlayer(tokenRival);
         player.setRivalToken(token);
-        player.setAlgorithmsComputer(new AlgorithmsComputerV1());
+        player.setAlgorithmsComputer(new AlgorithmsComputerMiniMax());
+        // player.setAlgorithmsComputer(new AlgorithmsComputerV1());
         game.addPlayer(player);
         return game;
     }

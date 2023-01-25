@@ -1,6 +1,9 @@
 package Modelo.Game;
 
 import Modelo.Board.AlgorithmsBoard.ExceptionBoxIsEmpty;
+
+import java.util.List;
+
 import Modelo.Board.Board;
 import Modelo.Players.Player;
 
@@ -19,4 +22,5 @@ public interface Game {
     void setPlayer(Player player, int index);
     String showBoard();
     void setSize(int size);
+    List<Player> getListPlayer();
 }

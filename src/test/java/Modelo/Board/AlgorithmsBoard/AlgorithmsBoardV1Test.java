@@ -17,11 +17,13 @@ class AlgorithmsBoardV1Test {
         board.turn(1,1,'O');
         board.turn(2,2,'O');
         assertTrue(algorithmsBoardV1.check('O'),"The check method have failed at check diagonals");
+        board.clear();
         board.turn(0,0,'X');
         board.turn(0,1,'X');
         board.turn(0,2,'X');
         assertFalse(algorithmsBoardV1.check('0'),"The check method have failed at check diagonals");
         assertTrue(algorithmsBoardV1.check('X'),"The check method have failed at check rows");
+        board.clear();
         board.turn(0,2,'A');
         board.turn(1,2,'A');
         board.turn(2,2,'A');

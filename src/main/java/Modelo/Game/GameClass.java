@@ -82,4 +82,18 @@ public class GameClass implements Game{
         board.setSize(size);
     }
 
+    public List<Player> getListPlayer() {
+        return this.listPlayer;
+    }
+
+
+    public int getTurn() {
+        return this.turn;
+    }
+
+    public void setTurn(int turn) {
+        this.turn = turn;
+    }
+
+
 }
